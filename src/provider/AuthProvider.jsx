@@ -1,8 +1,8 @@
 
-const AuthProvider = () => {
+const AuthProvider = ({children}) => {
     return (
         <div>
-            
+            {children}
         </div>
     );
 };
