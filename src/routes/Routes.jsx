@@ -4,6 +4,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoutes from "./PrivateRoutes";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,26 @@ const router = createBrowserRouter([
       {
         path:'signUp',
         element:<SignUp></SignUp>
+      },
+      {
+        path:"allToys",
+        element:<div className="text-6xl text-center mt-20">All Toys Page Is Coming</div>
+      },
+      {
+        path:"myToys",
+        element:<PrivateRoutes>
+            <div className="text-6xl text-center mt-20">My Toys Page Is Coming</div>
+        </PrivateRoutes>
+      },
+      {
+        path:"addToy",
+        element:<PrivateRoutes>
+            <div className="text-6xl text-center mt-20">Add A Toy Page Is Coming</div>
+        </PrivateRoutes>
+      },
+      {
+        path:'blogs',
+        element:<Blogs></Blogs>
       }
     ],
   },

@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signUp from "../../assets/login.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const [fold, setFold] = useState(false);
+  const { createUser,} =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,9 +21,54 @@ const SignUp = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+
     console.log({ name, photoURL, email, password });
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        updatedNameAndPhotURL(user, name, photoURL)
+   
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: `${error.message}`,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
+
     // form.reset()
   };
+
+  const updatedNameAndPhotURL = ( currentUser,name, photoURL) =>{
+    updateProfile(currentUser, {
+        displayName: name, 
+        photoURL: `${photoURL}`
+      })
+      .then(() => {
+        Swal.fire({
+          title: "Success!",
+          text: `${currentUser.displayName} your successfully login`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch(() => {
+        Swal.fire({
+          title: "Error!",
+          text: "Can not update name and photo",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
+}
+
+
   return (
     <div className="hero ">
       <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-4">
@@ -85,7 +138,7 @@ const SignUp = () => {
                     className="absolute top-[43%] right-2 text-xl"
                     onClick={() => setFold(!fold)}
                   >
-                   <FaEye />
+                    <FaEye />
                   </button>
                 )}
                 <label className="label">
@@ -100,13 +153,6 @@ const SignUp = () => {
                   value="Sign Up"
                   className="btn btn-primary"
                 />
-              </div>
-              <div className="divider">Or Sign Up With</div>
-              <div className="form-control mt-6">
-                <button className="btn btn-block btn-outline  hover:bg-white hover:text-black">
-                  <FcGoogle className="text-2xl mr-3" />{" "}
-                  <span className="text-sm ">Google</span>
-                </button>
               </div>
               <p className="mt-6 text-gray-400">
                 Already have an account. Please{" "}

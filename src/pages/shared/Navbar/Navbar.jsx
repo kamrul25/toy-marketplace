@@ -1,13 +1,34 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import logo from "../../../assets/images.jpg";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate("/");
+    logout()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "You successfully logout",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: `${error.message}`,
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
   };
+
   const menu = (
     <>
       <li>
@@ -58,41 +79,46 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <Link to="/" className=" normal-case text-xl">
-          ToyMarketPlace
+        <Link to="/">
+          <img src={logo} alt="" className="w-20 rounded-full"/>
+        </Link>
+        <Link to="/" className=" normal-case text-xl ml-1">
+          ScienceToy
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn btn-outline btn-warning">
-          Login
-        </Link>
-        {user && (
-          <div className="dropdown dropdown-hover">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src={user.photoURL} />
+        {user ? (
+          <>
+            <div className="dropdown dropdown-hover dropdown-left mr-4">
+              <div className=" btn btn-ghost btn-circle avatar">
+                <img src={user.photoURL} className="w-10 rounded-full" />
               </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-content text-base-200 rounded-box w-52"
+              >
+                <li>
+                  <h3>{user.displayName}</h3>
+                </li>
+                <li>
+                  <h3>{user.email}</h3>
+                </li>
+              </ul>
+            </div>
+            <button
+              className="btn btn-outline btn-error"
+              onClick={handleLogout}
             >
-              <li>
-                <h3>{user.displayName}</h3>
-              </li>
-              <li>
-                <button
-                  className="btn btn-block btn-outline bnt-error"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </div>
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-outline btn-warning">
+            Login
+          </Link>
         )}
       </div>
     </div>

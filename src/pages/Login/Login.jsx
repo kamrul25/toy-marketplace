@@ -1,19 +1,75 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/login.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-
+    const { loginUser, googleSignIn,} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [fold, setFold] = useState(false);
+
     const handleFormSubmit = (event) =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password =form.password.value;
+
         console.log(email, password)
-        // form.reset()
+
+       loginUser(email, password)
+       .then(result =>{
+        const user = result.user;
+
+        console.log(user)
+
+        Swal.fire({
+            title:"Success!",
+            text:`${user.displayName} your successfully login`,
+            icon:"success",
+             showConfirmButton: false,
+            timer: 1500
+        })
+       
+        navigate(from, { replace: true });
+    })
+    .catch(error =>{
+        Swal.fire({
+            title: "Error!",
+            text: `${ error.message}`,
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          })
+    })
+    form.reset()
+    }
+
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+            Swal.fire({
+                title:"Success!",
+                text:`${user.displayName} your successfully login`,
+                icon:"success",
+                showConfirmButton: false,
+                timer: 1500,
+            })
+            navigate(from, { replace: true });
+        })
+        .catch(error =>{
+            Swal.fire({
+                title: "Error!",
+                text: `${ error.message}`,
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+              })
+        })
     }
   return (
     <div className="hero ">
@@ -51,16 +107,16 @@ const Login = () => {
                 {fold ? (
                   <button
                     className="absolute top-[43%] right-2 text-xl"
-                    onClick={() => setFold(!fold)}
+                   
                   >
-                    <FaEyeSlash />
+                    <FaEyeSlash  onClick={() => setFold(!fold)}/>
                   </button>
                 ) : (
                   <button
                     className="absolute top-[43%] right-2 text-xl"
-                    onClick={() => setFold(!fold)}
+                    
                   >
-                   <FaEye />
+                   <FaEye onClick={() => setFold(!fold)}/>
                   </button>
                 )}
                 <label className="label">
@@ -78,7 +134,7 @@ const Login = () => {
               </div>
               <div className="divider">Or Login With</div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-block btn-outline hover:bg-white hover:text-black">
+                    <button className="btn btn-block btn-outline hover:bg-white hover:text-black" onClick={handleGoogleSignIn}>
                         <FcGoogle className="text-2xl mr-3"/> <span className="text-sm ">Google</span>
                     </button>
                     </div>    
