@@ -4,10 +4,10 @@ import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-    const navigate = useNavigate()
-    const handleLogout = () =>{
-        navigate('/')
-    }
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate("/");
+  };
   const menu = (
     <>
       <li>
@@ -16,12 +16,16 @@ const Navbar = () => {
       <li>
         <Link to="/allToys">All Toys</Link>{" "}
       </li>
-      <li>
-        <Link to="/myToys">My Toys</Link>{" "}
-      </li>
-      <li>
-        <Link to="/addToy">Add A Toy</Link>{" "}
-      </li>
+      {user && (
+        <>
+          <li>
+            <Link to="/myToys">My Toys</Link>{" "}
+          </li>
+          <li>
+            <Link to="/addToy">Add A Toy</Link>{" "}
+          </li>
+        </>
+      )}
       <li>
         <Link to="/blogs">Blogs</Link>{" "}
       </li>
@@ -62,7 +66,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{menu}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn btn-outline btn-warning">Login</Link>
+        <Link to="/login" className="btn btn-outline btn-warning">
+          Login
+        </Link>
         {user && (
           <div className="dropdown dropdown-hover">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -78,8 +84,9 @@ const Navbar = () => {
                 <h3>{user.displayName}</h3>
               </li>
               <li>
-                <button className="btn btn-block btn-outline bnt-error"
-                onClick={handleLogout}
+                <button
+                  className="btn btn-block btn-outline bnt-error"
+                  onClick={handleLogout}
                 >
                   Logout
                 </button>
