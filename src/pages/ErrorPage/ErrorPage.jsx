@@ -3,10 +3,10 @@ import error from "../../assets/error.jpg";
 
 const ErrorPage = () => {
   return (
-    <div className=" flex justify-center items-center gap-4 rounded-xl pt-20">
+    <div className=" flex flex-col-reverse md:flex-row justify-center items-center gap-4 rounded-xl pt-20">
       <img src={error} alt="" className="w-96 h-96 rounded-xl " />
-      <div className="">
-        <h1 className=" text-red-400 text-3xl font-bold text-center m-4">
+      <div className="text-center">
+        <h1 className=" text-red-400 text-3xl font-bold  m-4">
           Page Not Found!
         </h1>
         <p className="text-red-400 font-medium m-4">
