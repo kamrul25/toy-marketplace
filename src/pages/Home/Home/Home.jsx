@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import Gallery from "../Gallery/Gallery";
+import Slider from "../Slider/Slider";
+
 
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-6xl text-red-300">I am from Home page.........</h1>
-            <Link to="/blogs" className="btn btn-outline btn-primary">See Blogs</Link>
+        <div className="my-10">
+            <Slider></Slider>
+            <Gallery></Gallery>
         </div>
     );
 };

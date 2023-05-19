@@ -1,5 +1,5 @@
 
-const Banner = () => {
+const Gallery = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const Banner = () => {
     );
 };
 
-export default Banner;
+export default Gallery;
