@@ -83,7 +83,7 @@ const Navbar = () => {
           <img src={logo} alt="" className="w-20 rounded-full"/>
         </Link>
         <Link to="/" className=" normal-case text-xl ml-1">
-          ScienceToy
+          carToys
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
