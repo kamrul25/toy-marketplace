@@ -1,7 +1,7 @@
 const Blogs = () => {
   return (
     <div className="grid grid-cols-1 gap-3 my-10 mx-5">
-      <div className="card-body rounded-xl">
+      <div className="card-body rounded-xl" data-aos="fade-up">
         <div className="chat chat-start">
           <div className="chat-bubble  text-xl">
             What is an access token and refresh token? How do they work and
@@ -14,7 +14,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="card-body rounded-xl">
+      <div className="card-body rounded-xl" data-aos="fade-up">
         <div className="chat chat-start">
           <div className="chat-bubble  text-xl">
             Compare SQL and NoSQL databases?
@@ -29,7 +29,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="card-body rounded-xl">
+      <div className="card-body rounded-xl" data-aos="fade-up">
         <div className="chat chat-start">
           <div className="chat-bubble  text-xl">
             What is express js? What is Nest JS?
@@ -55,7 +55,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="card-body rounded-xl">
+      <div className="card-body rounded-xl" data-aos="fade-up">
         <div className="chat chat-start">
           <div className="chat-bubble text-xl">
             What is MongoDB aggregate and how does it work

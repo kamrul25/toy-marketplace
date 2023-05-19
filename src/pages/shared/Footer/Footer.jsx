@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images.jpg";
 import { FaTwitter, FaYoutube, FaFacebookF, FaMapMarker,  FaPhoneAlt } from "react-icons/fa";
-;
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
   return (
-    <>
+    <div data-aos="fade-up">
       <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
         <div>
           <img src={logo} alt="" className="w-12 rounded-xl" />
@@ -59,7 +58,7 @@ const Footer = () => {
       <div className="footer footer-center p-4 bg-neutral text-neutral-content ">
         <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
       </div>
-    </>
+    </div>
   );
 };
 

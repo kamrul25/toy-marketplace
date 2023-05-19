@@ -21,7 +21,7 @@ const Slider = () => {
   );
 
   return (
-    <div className="carousel w-full h-[90vh] rounded-xl ">
+    <div className="carousel w-full h-[90vh] rounded-xl " data-aos="fade-up">
       <div id="slide1" className="carousel-item relative w-full">
         <img src={sl1} className="w-full " />
         <div className="absolute flex justify-end gap-3 right-3 top-2">
