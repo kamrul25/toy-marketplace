@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images.jpg";
-import { FaTwitter, FaYoutube, FaFacebookF, FaMapMarker,  FaPhoneAlt } from "react-icons/fa";
+import {
+  FaTwitter,
+  FaYoutube,
+  FaFacebookF,
+  FaMapMarker,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div data-aos="fade-up">
+    <div
+      data-aos="fade-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="2000"
+    >
       <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
         <div>
           <img src={logo} alt="" className="w-12 rounded-xl" />
@@ -37,8 +47,13 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Contact</span>
-          <p className="flex items-center gap-3"><FaPhoneAlt/> <span>+8801846******</span></p>
-          <p className="flex items-center gap-3"> <FaMapMarker /> <span>Feni, Bangladesh</span></p>
+          <p className="flex items-center gap-3">
+            <FaPhoneAlt /> <span>+8801846******</span>
+          </p>
+          <p className="flex items-center gap-3">
+            {" "}
+            <FaMapMarker /> <span>Feni, Bangladesh</span>
+          </p>
         </div>
         <div>
           <span className="footer-title">Social</span>

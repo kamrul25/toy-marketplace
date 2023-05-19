@@ -44,7 +44,9 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="my-5" data-aos="fade-up">
+    <div className="my-5" data-aos="fade-up"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000">
       <h1 className="text-center text-3xl font-semibold lg:text-5xl my-10">
         Gallery of Car Toy
       </h1>
@@ -54,7 +56,7 @@ const Gallery = () => {
       >
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {images.map((image, index) => (
-            <img key={index} src={image} className="w-full border rounded-xl" />
+            <img key={index} src={image} className="w-full border rounded-xl"   />
           ))}
         </div>
       </div>
