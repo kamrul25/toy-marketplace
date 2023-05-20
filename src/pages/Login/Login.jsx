@@ -19,13 +19,9 @@ const Login = () => {
         const email = form.email.value;
         const password =form.password.value;
 
-        console.log(email, password)
-
        loginUser(email, password)
        .then(result =>{
         const user = result.user;
-
-        console.log(user)
 
         Swal.fire({
             title:"Success!",
@@ -52,7 +48,7 @@ const Login = () => {
         googleSignIn()
         .then(result =>{
             const user = result.user;
-            console.log(user)
+
             Swal.fire({
                 title:"Success!",
                 text:`${user.displayName} your successfully login`,

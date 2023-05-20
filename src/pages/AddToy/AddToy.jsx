@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToy = () => {
    const {user} = useContext(AuthContext) 
@@ -11,6 +12,28 @@ const AddToy = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data)
+    fetch("https://toy-marketplace-server-gamma.vercel.app/allToy",{
+        method:"POST",
+        headers:{
+            "Content-type" :"application/json",
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(result => {
+      if (result?.insertedId) {
+        console.log(result)
+          Swal.fire({
+            title:"Success!",
+            text:`Successfully added`,
+            icon:"success",
+             showConfirmButton: false,
+            timer: 1500
+        })
+      }
+    }).catch(error =>{
+        console.error(error)
+    })
 };
 
   return (

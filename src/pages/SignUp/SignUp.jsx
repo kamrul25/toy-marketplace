@@ -22,12 +22,12 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log({ name, photoURL, email, password });
+    // console.log({ name, photoURL, email, password });
 
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        // console.log(user)
         updatedNameAndPhotURL(user, name, photoURL)
    
       })
@@ -40,7 +40,7 @@ const SignUp = () => {
         });
       });
 
-    // form.reset()
+    form.reset()
   };
 
   const updatedNameAndPhotURL = ( currentUser,name, photoURL) =>{
