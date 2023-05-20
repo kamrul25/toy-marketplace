@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
+import {  Link, useLoaderData } from "react-router-dom";
+
 
 const AllToys = () => {
-  const [allToy, setAllToy] = useState([]);
-  useEffect(() => {
-    fetch("https://toy-marketplace-server-gamma.vercel.app/allToy")
-      .then((res) => res.json())
-      .then((result) => {
-        setAllToy(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    const allToy = useLoaderData()
+
+//   const [allToy, setAllToy] = useState(loadedAllToy);
+//   useEffect(() => {
+//     fetch("https://toy-marketplace-server-gamma.vercel.app/allToy")
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setAllToy(result);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }, []);
   return (
     <div>
       <table className="table w-full">
@@ -35,7 +38,7 @@ const AllToys = () => {
                 <td>{toy.price}</td>
                 <td>{toy.quantity}</td>
                 <td>
-                    <Link className="btn">Details</Link>
+                    <Link to={`/allToys/${toy._id}`} className="btn">Details</Link>
                 </td>
                </tr> 
                 

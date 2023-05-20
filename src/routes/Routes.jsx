@@ -8,6 +8,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Blogs from "../pages/Blogs/Blogs";
 import AddToy from "../pages/AddToy/AddToy";
 import AllToys from "../pages/AllToys/AllToys";
+import ToyDetails from "../pages/AllToys/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -20,33 +21,53 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'login',
-        element:<Login></Login>
+        path: "login",
+        element: <Login></Login>,
       },
       {
-        path:'signUp',
-        element:<SignUp></SignUp>
+        path: "signUp",
+        element: <SignUp></SignUp>,
       },
       {
-        path:"allToys",
-        element:<AllToys></AllToys>
+        path: "allToys",
+        element: <AllToys></AllToys>,
+        loader: () =>
+          fetch("https://toy-marketplace-server-gamma.vercel.app/allToy"),
       },
       {
-        path:"myToys",
-        element:<PrivateRoutes>
-            <div className="text-6xl text-center mt-20">My Toys Page Is Coming</div>
-        </PrivateRoutes>
+        path: "allToys/:id",
+        element: (
+          <PrivateRoutes>
+            <ToyDetails></ToyDetails>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-gamma.vercel.app/allToy/${params.id}`
+          ),
       },
       {
-        path:"addToy",
-        element:<PrivateRoutes>
+        path: "myToys",
+        element: (
+          <PrivateRoutes>
+            <div className="text-6xl text-center mt-20">
+              My Toys Page Is Coming
+            </div>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "addToy",
+        element: (
+          <PrivateRoutes>
             <AddToy></AddToy>
-        </PrivateRoutes>
+          </PrivateRoutes>
+        ),
       },
       {
-        path:'blogs',
-        element:<Blogs></Blogs>
-      }
+        path: "blogs",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
 ]);
