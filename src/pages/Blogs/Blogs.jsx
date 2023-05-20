@@ -1,4 +1,7 @@
+import useTitle from "../../hooks/useTitle";
+
 const Blogs = () => {
+  useTitle("Blogs")
   return (
     <div className="grid grid-cols-1 gap-3 my-10 mx-5">
       <div className="card-body rounded-xl" data-aos="fade-up" data-aos-easing="ease-out-cubic" data-aos-duration="2000">

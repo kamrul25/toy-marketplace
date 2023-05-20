@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
     const { loginUser, googleSignIn,} = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Login = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const [fold, setFold] = useState(false);
+    useTitle("Login")
 
     const handleFormSubmit = (event) =>{
         event.preventDefault();

@@ -1,7 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { FaArrowLeft, FaStar } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 const ToyDetails = () => {
+  useTitle("Toy Details");
   const details = useLoaderData();
   const {
     image,

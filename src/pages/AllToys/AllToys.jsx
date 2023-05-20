@@ -1,26 +1,17 @@
 // import { useEffect, useState } from "react";
-import {  Link, useLoaderData } from "react-router-dom";
-
+import { Link, useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
-    const allToy = useLoaderData()
-
-//   const [allToy, setAllToy] = useState(loadedAllToy);
-//   useEffect(() => {
-//     fetch("https://toy-marketplace-server-gamma.vercel.app/allToy")
-//       .then((res) => res.json())
-//       .then((result) => {
-//         setAllToy(result);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }, []);
+  const allToy = useLoaderData();
+  useTitle("All Toys")
   return (
-    <div>
+    <div className="overflow-x-auto">
+      
       <table className="table w-full">
         <thead>
-          <tr>
+          <tr >
+            <th></th>
             <th>Name</th>
             <th>Toy Name</th>
             <th>Sub-category</th>
@@ -29,26 +20,24 @@ const AllToys = () => {
             <th>Details</th>
           </tr>
         </thead>
-        <tbody>
-               {allToy.map(toy =>
-               <tr key={toy._id}>
-                <td>{toy.sellerName}</td>
-                <td>{toy.toyName}</td>
-                <td>{toy.subCategory}</td>
-                <td>{toy.price}</td>
-                <td>{toy.quantity}</td>
-                <td>
-                    <Link to={`/allToys/${toy._id}`} className="btn">Details</Link>
-                </td>
-               </tr> 
-                
-                )}
+        <tbody >
+          {allToy.map((toy, index) => (
+            <tr key={toy._id} >
+              <td >{index + 1}</td>
+              <td >{toy.sellerName}</td>
+              <td >{toy.toyName}</td>
+              <td >{toy.subCategory}</td>
+              <td >${toy.price}</td>
+              <td >{toy.quantity}</td>
+              <td>
+                <Link to={`/allToys/${toy._id}`} className="btn">
+                  Details
+                </Link>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-
-   {/* data-aos="fade-up"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000" */}
     </div>
   );
 };

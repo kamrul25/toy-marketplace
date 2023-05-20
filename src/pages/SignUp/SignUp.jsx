@@ -5,14 +5,15 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
   const [fold, setFold] = useState(false);
-  const { createUser,} =
-    useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location?.state?.from?.pathname || "/";
+  useTitle("Sign Up")
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -28,8 +29,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user)
-        updatedNameAndPhotURL(user, name, photoURL)
-   
+        updatedNameAndPhotURL(user, name, photoURL);
       })
       .catch((error) => {
         Swal.fire({
@@ -40,14 +40,14 @@ const SignUp = () => {
         });
       });
 
-    form.reset()
+    form.reset();
   };
 
-  const updatedNameAndPhotURL = ( currentUser,name, photoURL) =>{
+  const updatedNameAndPhotURL = (currentUser, name, photoURL) => {
     updateProfile(currentUser, {
-        displayName: name, 
-        photoURL: `${photoURL}`
-      })
+      displayName: name,
+      photoURL: `${photoURL}`,
+    })
       .then(() => {
         Swal.fire({
           title: "Success!",
@@ -66,8 +66,7 @@ const SignUp = () => {
           confirmButtonText: "Try Again",
         });
       });
-}
-
+  };
 
   return (
     <div className="hero ">

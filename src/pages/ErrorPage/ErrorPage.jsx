@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import error from "../../assets/error.jpg";
+import useTitle from "../../hooks/useTitle";
 
 const ErrorPage = () => {
+  useTitle("Error Page")
   return (
     <div className=" flex flex-col-reverse md:flex-row justify-center items-center gap-4 rounded-xl pt-20">
       <img src={error} alt="" className="w-96 h-96 rounded-xl " />
