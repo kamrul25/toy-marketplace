@@ -15,6 +15,7 @@ const ToyDetails = () => {
     quantity,
     description,
   } = details;
+ 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl relative">
       <figure className="w-1/2 h-1/2">

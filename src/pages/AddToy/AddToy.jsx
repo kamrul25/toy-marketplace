@@ -95,8 +95,8 @@ const AddToy = () => {
               <span className="label-text">Sub-category </span>
             </label>
             <select  {...register("subCategory", { required: true })} className="input input-bordered">
-             <option value="regular ">regular </option>
-             <option value="truck ">truck</option>
+             <option value="regular">regular </option>
+             <option value="truck">truck</option>
              <option value="police">police</option>
             </select>
           </div>

@@ -4,6 +4,7 @@ import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const allToy = useLoaderData();
+  
   useTitle("All Toys")
   return (
     <div className="overflow-x-auto">
