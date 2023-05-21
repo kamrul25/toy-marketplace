@@ -13,6 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <Slider ></Slider>
             <Gallery ></Gallery>
+            <Section></Section>
             <SubCategoryTabs></SubCategoryTabs>
             <Section></Section>
         </div>

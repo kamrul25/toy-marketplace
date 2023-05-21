@@ -17,7 +17,7 @@ const Blogs = () => {
           </div>
         </div>
         <div className="chat chat-end">
-          <div className="chat-bubble bg-success text-base-content text-sm">
+          <div className="chat-bubble  text-sm">
             <span className="text-lg">Access token </span>is a credential used
             in authentication and authorization systems to grant a client
             application access to protected resources. It is a string of
@@ -54,7 +54,7 @@ const Blogs = () => {
           </div>
         </div>
         <div className="chat chat-end">
-          <div className="chat-bubble bg-success text-base-content text-sm">
+          <div className="chat-bubble  text-sm">
             <span className="text-lg"> SQL (Structured Query Language)</span>
             databases are based on the relational model and utilize SQL as the
             standard language for managing and querying data.
@@ -84,7 +84,7 @@ const Blogs = () => {
           </div>
         </div>
         <div className="chat chat-end">
-          <div className="chat-bubble  bg-success text-base-content text-sm">
+          <div className="chat-bubble  text-sm">
             <span className="text-lg">Express.js </span> is the most popular web
             framework for Node.js, a JavaScript runtime environment. It is
             designed for building web applications and APIs and has been called
@@ -115,7 +115,7 @@ const Blogs = () => {
           </div>
         </div>
         <div className="chat chat-end">
-          <div className="chat-bubble bg-success text-base-content text-sm">
+          <div className="chat-bubble text-sm">
             <span className="text-lg">MongoDB's</span> aggregate is a powerful
             framework used for data aggregation and a way of processing a large
             number of documents in a collection by means of passing them through

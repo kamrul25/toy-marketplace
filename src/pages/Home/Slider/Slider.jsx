@@ -7,14 +7,10 @@ import sl4 from "../../../assets/slider/sl4.png";
 const Slider = () => {
   const sliderText = (
     <div className="absolute top-16 left-8">
-      <h1 className="text-3xl lg:text-6xl font-bold">
+      <h1 className="text-3xl lg:text-6xl font-bold text-gray-700">
         <span>Welcome To You</span> <br /> <span>Car Toys World</span>
       </h1>
-      <p className="text-base text-gray-600 font-medium my-4">
-        We have various type of car toy. <br />
-        To see details about car toys click the below button.{" "}
-      </p>
-      <Link to="/allToys" className="btn btn-outline btn-primary">
+      <Link to="/allToys" className="btn  btn-primary mt-5">
         See All Toys
       </Link>
     </div>

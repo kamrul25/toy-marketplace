@@ -47,14 +47,15 @@ const Gallery = () => {
     <div  data-aos="fade-up"
     data-aos-easing="ease-out-cubic"
     data-aos-duration="1000">
-      <h1 className="text-center text-3xl font-semibold lg:text-5xl my-10">
+      <h1 className="text-center text-3xl font-semibold lg:text-5xl uppercase text-gray-600 mt-10">
         Gallery of Car Toy
       </h1>
+      <p className="text-center text-xl text-gray-500 mt-3 mb-10">See our collections of toy car </p>
       <div
         className="overflow-hidden h-96 hover:overflow-y-auto"
         data-aos="fade-up"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 border-2 rounded-xl">
           {images.map((image, index) => (
             <img key={index} src={image} className="w-full border rounded-xl"   />
           ))}

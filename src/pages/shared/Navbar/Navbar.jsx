@@ -32,28 +32,53 @@ const Navbar = () => {
   const menu = (
     <>
       <li>
-        <Link to="/">Home</Link>{" "}
+        <Link
+          to="/"
+          className="link link-hover hover:bg-white hover:text-primary text-2xl text-gray-600"
+        >
+          Home
+        </Link>{" "}
       </li>
       <li>
-        <Link to="/allToys">All Toys</Link>{" "}
+        <Link
+          to="/allToys"
+          className="link link-hover hover:bg-white hover:text-primary text-2xl text-gray-600"
+        >
+          All Toys
+        </Link>{" "}
       </li>
       {user && (
         <>
           <li>
-            <Link to="/myToys">My Toys</Link>{" "}
+            <Link
+              to="/myToys"
+              className="link link-hover hover:bg-white hover:text-primary text-2xl text-gray-600"
+            >
+              My Toys
+            </Link>{" "}
           </li>
           <li>
-            <Link to="/addToy">Add A Toy</Link>{" "}
+            <Link
+              to="/addToy"
+              className="link link-hover hover:bg-white hover:text-primary text-2xl text-gray-600"
+            >
+              Add A Toy
+            </Link>{" "}
           </li>
         </>
       )}
       <li>
-        <Link to="/blogs">Blogs</Link>{" "}
+        <Link
+          to="/blogs"
+          className="link link-hover hover:bg-white hover:text-primary text-2xl text-gray-600"
+        >
+          Blogs
+        </Link>{" "}
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100 border  mt-4 rounded-xl">
+    <div className="navbar  mt-4 rounded-xl   ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,10 +113,19 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/">
-          <img src={logo} alt="" className="w-20 rounded-full" />
+          <img
+            src={logo}
+            alt=""
+            className="w-32 h-auto mx-5 md:mx-0 md:w-20 md:h-auto rounded-full"
+          />
         </Link>
-        <Link to="/" className=" normal-case text-xl ml-1">
-          carToys
+        <Link
+          to="/"
+          className=" normal-case text-2xl text-blue-300 ml-5 md:ml-1"
+        >
+          <span className="text-blue-400">car</span>
+          <span className="text-gray-500">T</span>
+          <span className="text-blue-600">oys</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

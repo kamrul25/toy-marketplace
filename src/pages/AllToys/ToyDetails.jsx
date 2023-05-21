@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import useTitle from "../../hooks/useTitle";
 
+
 const ToyDetails = () => {
   useTitle("Toy Details");
   const details = useLoaderData();

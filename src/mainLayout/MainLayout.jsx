@@ -4,9 +4,11 @@ import Footer from "../pages/shared/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div >
       <Navbar></Navbar>
-      <Outlet></Outlet>
+      <div className="mt-20">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );

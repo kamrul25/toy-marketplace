@@ -21,41 +21,41 @@ const SubCategoryTabs = () => {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000"
     >
-      <h1 className="text-3xl font-bold text-center m-5">
-        See Car Toys By Sub Category
+      <h1 className="text-3xl font-bold text-center uppercase text-gray-600 m-5">
+      Shop by category
       </h1>
       <Tabs>
         <div className="text-center">
           <TabList>
             <Tab onClick={() => setSubCategory("regular")}>
-              <h1 className="text-2xl font-medium">Regular</h1>
+              <h1 className={subCategory === "regular" ? "text-2xl font-medium text-primary " : "text-2xl font-medium text-gray-600"}>Regular</h1>
             </Tab>
             <Tab onClick={() => setSubCategory("truck")}>
-              <h1 className="text-2xl font-medium">Truck</h1>
+              <h1 className={subCategory === "truck" ? "text-2xl font-medium text-primary " : "text-2xl font-medium text-gray-600"}>Truck</h1>
             </Tab>
             <Tab onClick={() => setSubCategory("police")}>
-              <h1 className="text-2xl font-medium">Police</h1>
+              <h1 className={subCategory === "police" ? "text-2xl font-medium text-primary" : "text-2xl font-medium text-gray-600"}>Police</h1>
             </Tab>
           </TabList>
         </div>
 
-        <div className="w-10/12 mx-auto">
+        <div className="w-11/12 mx-auto">
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-between ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-3 ">
               {toys.map((toy) => (
                 <Category key={toy._id} toy={toy}></Category>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-3">
               {toys.map((toy) => (
                 <Category key={toy._id} toy={toy}></Category>
               ))}
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-3 ">
               {toys.map((toy) => (
                 <Category key={toy._id} toy={toy}></Category>
               ))}
