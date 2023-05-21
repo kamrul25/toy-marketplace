@@ -9,7 +9,7 @@ import Banner from "../Banner/Banner";
 const Home = () => {
 
     return (
-        <div className="space-y-16 mt-10" >
+        <div className="space-y-16 mt-10 " >
             <Banner></Banner>
             <Slider ></Slider>
             <Gallery ></Gallery>

@@ -10,7 +10,7 @@ import 'aos/dist/aos.css';
 AOS.init();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="max-w-screen-xl mx-auto">
+  <div className="w-full lg:max-w-screen-xl mx-auto">
     <React.StrictMode>
       <AuthProvider>
         <RouterProvider  router={router} />

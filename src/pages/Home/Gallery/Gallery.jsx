@@ -46,7 +46,7 @@ const Gallery = () => {
   return (
     <div  data-aos="fade-up"
     data-aos-easing="ease-out-cubic"
-    data-aos-duration="2000">
+    data-aos-duration="1000">
       <h1 className="text-center text-3xl font-semibold lg:text-5xl my-10">
         Gallery of Car Toy
       </h1>

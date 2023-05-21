@@ -16,19 +16,25 @@ const SubCategoryTabs = () => {
       });
   }, [subCategory]);
   return (
-    <div  data-aos="fade-up">
-        <h1 className="text-3xl font-bold text-center m-5">See Car Toys By Sub Category</h1>
+    <div
+      data-aos="fade-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+    >
+      <h1 className="text-3xl font-bold text-center m-5">
+        See Car Toys By Sub Category
+      </h1>
       <Tabs>
         <div className="text-center">
           <TabList>
             <Tab onClick={() => setSubCategory("regular")}>
-                <h1 className="text-2xl font-medium">Regular</h1>
+              <h1 className="text-2xl font-medium">Regular</h1>
             </Tab>
             <Tab onClick={() => setSubCategory("truck")}>
-            <h1 className="text-2xl font-medium">Truck</h1>
+              <h1 className="text-2xl font-medium">Truck</h1>
             </Tab>
             <Tab onClick={() => setSubCategory("police")}>
-            <h1 className="text-2xl font-medium">Police</h1>
+              <h1 className="text-2xl font-medium">Police</h1>
             </Tab>
           </TabList>
         </div>

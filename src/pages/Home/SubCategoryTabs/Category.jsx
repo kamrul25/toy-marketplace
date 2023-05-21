@@ -1,11 +1,13 @@
+
 import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {  Link, } from "react-router-dom";
 
 const Category = ({ toy }) => {
   const { image, toyName, price, rating } = toy;
+
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
-      <figure className="w-96 h-96">
+    <div className="card w-auto md:w-96 bg-base-100 shadow-xl">
+      <figure className="w-auto md:w-96 h-96">
         <img src={image} alt="Shoes" className="w-full rounded-xl" />
       </figure>
       <div className="card-body">
@@ -18,9 +20,7 @@ const Category = ({ toy }) => {
           </div>
         </div>
         <div className="card-actions justify-end">
-          <Link to={`/allToys/${toy._id}`} className="btn">
-            Details
-          </Link>
+          <Link to={`/allToys/${toy._id}`} className="btn" >View Details</Link>
         </div>
       </div>
     </div>

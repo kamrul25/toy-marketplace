@@ -1,21 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaStar } from "react-icons/fa";
 import { HiX } from "react-icons/hi";
 import useTitle from "../../hooks/useTitle";
-
-// import Toy from "./Toy";
-// import UpdateToy from "./UpdateToy";
+import UpdateToy from "./UpdateToy";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
-  const [navigate, setNavigate] = useState(false);
-  const location = useLocation();
+  const [singleToy, setSingleToy] = useState(false);
+
   useTitle("My Toys");
-  
+
   useEffect(() => {
     fetch(
       `https://toy-marketplace-server-gamma.vercel.app/allToy?email=${user?.email}`
@@ -42,17 +40,52 @@ const MyToys = () => {
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              const remaining = myToys.filter((toy) => toy._id === id);
+              const remaining = myToys.filter((toy) => toy._id !== id);
               setMyToys(remaining);
             }
           });
       }
     });
   };
+
+  const handleUpdate = (data) => {
+    fetch(
+      `https://toy-marketplace-server-gamma.vercel.app/allToy/${data._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: `Successfully update`,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          const remaining = myToys.filter((toy) => toy._id !== data._id);
+          const update = myToys.find((toy) => toy._id === data._id);
+          update.price = data.price;
+          update.quantity= data.quantity;
+          const newUpdatedToys = [update, ...remaining];
+
+          setMyToys(newUpdatedToys);
+          // clear singleToy
+          setSingleToy(false);
+        }
+      });
+  };
+
+
   return (
     <>
-      {/* overflow-x-auto */}
-      {myToys ? (
+      {myToys.length > 0 ? (
         <div className=" w-full">
           <table className="table w-full">
             <thead>
@@ -90,21 +123,13 @@ const MyToys = () => {
                   </td>
                   <td>{toy.quantity}</td>
                   <td>
-                    {navigate && (
-                      <Navigate
-                        to={`${toy._id}`}
-                        state={{ from: location }}
-                        replace
-                      ></Navigate>
-                    )}
-
-                    <Link
-                      to={`${toy._id}`}
-                      className="btn btn-primary"
-                      onClick={() => setNavigate(true)}
+                    <label
+                      htmlFor="my-modal-3"
+                      className="btn"
+                      onClick={() => setSingleToy(toy)}
                     >
                       Edit
-                    </Link>
+                    </label>
                   </td>
                   <td>
                     <button
@@ -119,9 +144,34 @@ const MyToys = () => {
               ))}
             </tbody>
           </table>
+          {singleToy && (
+            <>
+              <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+              <div className="modal">
+                <div className="modal-box w-11/12 max-w-4xl relative">
+                  <label
+                    htmlFor="my-modal-3"
+                    className="btn btn-sm btn-circle absolute right-2 top-2"
+                  >
+                    ✕
+                  </label>
+                  <UpdateToy
+                    key={singleToy._id}
+                    toy={singleToy}
+                    handleUpdate={handleUpdate}
+                  ></UpdateToy>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       ) : (
-        <div className="my-20 mx-10">
+        <div
+          className="my-20  text-center"
+          data-aos="fade-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+        >
           <h1 className="text-3xl font-bold my-5">Please! Add some toy </h1>
           <Link to="/addToy" className="btn btn-outline btn-primary">
             Add Toy{" "}

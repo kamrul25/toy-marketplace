@@ -53,7 +53,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 border  mt-4 rounded-xl" >
+    <div className="navbar bg-base-100 border  mt-4 rounded-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -77,10 +77,18 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {menu}
+            {user && (
+              <button
+                className="btn btn-outline btn-error"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            )}
           </ul>
         </div>
         <Link to="/">
-          <img src={logo} alt="" className="w-20 rounded-full"/>
+          <img src={logo} alt="" className="w-20 rounded-full" />
         </Link>
         <Link to="/" className=" normal-case text-xl ml-1">
           carToys
@@ -98,7 +106,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-content text-base-200 rounded-box w-52"
+                className="shadow menu menu-compact dropdown-content bg-base-content text-base-200 rounded-box w-52"
               >
                 <li>
                   <h3>{user.displayName}</h3>
@@ -109,7 +117,7 @@ const Navbar = () => {
               </ul>
             </div>
             <button
-              className="btn btn-outline btn-error"
+              className="btn btn-outline btn-error hidden md:block"
               onClick={handleLogout}
             >
               Logout

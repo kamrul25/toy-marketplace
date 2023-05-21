@@ -29,7 +29,7 @@ const Login = () => {
             title:"Success!",
             text:`${user.displayName} your successfully login`,
             icon:"success",
-             showConfirmButton: false,
+            showConfirmButton: false,
             timer: 1500
         })
        
@@ -76,7 +76,7 @@ const Login = () => {
           <img src={login} alt="" className="rounded-xl"/>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <div className="card-body relative">
             <h1 className="text-2xl md:text-4xl font-bold">Login now!</h1>
             <form onSubmit={handleFormSubmit}>
               <div className="form-control">
@@ -91,7 +91,7 @@ const Login = () => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control relative">
+              <div className="form-control ">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -102,26 +102,6 @@ const Login = () => {
                   required
                   className="input input-bordered"
                 />
-                {fold ? (
-                  <button
-                    className="absolute top-[43%] right-2 text-xl"
-                   
-                  >
-                    <FaEyeSlash  onClick={() => setFold(!fold)}/>
-                  </button>
-                ) : (
-                  <button
-                    className="absolute top-[43%] right-2 text-xl"
-                    
-                  >
-                   <FaEye onClick={() => setFold(!fold)}/>
-                  </button>
-                )}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
                 <input
@@ -138,6 +118,21 @@ const Login = () => {
                     </div>    
               <p className="mt-6 text-gray-400">If you are first time , please create an account!!! <Link to="/signUp" className="text-orange-400 link-hover">Sign Up</Link></p>
             </form>
+            {fold ? (
+                  <button
+                  className="absolute top-[40%] right-12 text-2xl"
+                   
+                  >
+                    <FaEyeSlash  onClick={() => setFold(!fold)}/>
+                  </button>
+                ) : (
+                  <button
+                    className="absolute top-[40%] right-12 text-2xl"
+                    
+                  >
+                   <FaEye onClick={() => setFold(!fold)}/>
+                  </button>
+                )}
           </div>
         </div>
       </div>

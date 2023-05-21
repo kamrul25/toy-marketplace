@@ -21,9 +21,12 @@ const Slider = () => {
   );
 
   return (
-    <div className="carousel w-full h-[90vh] rounded-xl " data-aos="fade-up"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000">
+    <div
+      className="carousel w-full h-[90vh] rounded-xl "
+      data-aos="fade-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+    >
       <div id="slide1" className="carousel-item relative w-full">
         <img src={sl1} className="w-full " />
         <div className="absolute flex justify-end gap-3 right-3 top-2">
@@ -37,7 +40,7 @@ const Slider = () => {
         <div>{sliderText}</div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <img src={sl2} className="w-full "  />
+        <img src={sl2} className="w-full " />
         <div className="absolute flex justify-end gap-3 right-3 top-2">
           <a href="#slide1" className="btn btn-circle hover:bg-red-500">
             ❮
@@ -61,7 +64,7 @@ const Slider = () => {
         <div>{sliderText}</div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
-        <img src={sl4} className="w-full "  />
+        <img src={sl4} className="w-full " />
         <div className="absolute flex justify-end gap-3 right-3 top-2">
           <a href="#slide3" className="btn btn-circle hover:bg-red-500">
             ❮

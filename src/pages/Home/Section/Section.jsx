@@ -9,7 +9,12 @@ import img8 from "../../../assets/sportsCar/sp5.png";
 
 const Section = () => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 mx-3">
+    <div
+      className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 mx-3"
+      data-aos="fade-up"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+    >
       <div className=" card  bg-white shadow image-full">
         <img src={img6} alt="" className="w-40 h-40 rounded-xl" />
       </div>

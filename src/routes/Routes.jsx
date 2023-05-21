@@ -10,7 +10,6 @@ import AddToy from "../pages/AddToy/AddToy";
 import AllToys from "../pages/AllToys/AllToys";
 import ToyDetails from "../pages/AllToys/ToyDetails";
 import MyToys from "../pages/MyToys/MyToys";
-import UpdateToy from "../pages/MyToys/UpdateToy";
 
 const router = createBrowserRouter([
   {
@@ -54,14 +53,6 @@ const router = createBrowserRouter([
           <PrivateRoutes>
             <MyToys></MyToys>
           </PrivateRoutes> 
-        ),
-      },
-      {
-        path:"myToys/:id",
-        element:<UpdateToy></UpdateToy>,
-        loader: ({ params }) =>
-        fetch(
-          `https://toy-marketplace-server-gamma.vercel.app/allToy/${params.id}`
         ),
       },
       {

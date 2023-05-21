@@ -12,7 +12,7 @@ const PrivateRoutes = ({children}) => {
     }
 
     if(!user){
-        Swal.fire('Please login first !!')
+        Swal.fire('You have to log in first to view details !!')
         return <Navigate to="/login"  state={{ from: location }} replace></Navigate>
     }
     return children;

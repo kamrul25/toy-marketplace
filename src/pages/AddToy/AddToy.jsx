@@ -5,46 +5,52 @@ import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
 
 const AddToy = () => {
-   const {user} = useContext(AuthContext)
-  useTitle("Add A Toy")   
+  const { user } = useContext(AuthContext);
+  useTitle("Add A Toy");
 
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    reset
   } = useForm();
   const onSubmit = (data) => {
     // console.log(data)
-    fetch("https://toy-marketplace-server-gamma.vercel.app/allToy",{
-        method:"POST",
-        headers:{
-            "Content-type" :"application/json",
-        },
-        body: JSON.stringify(data)
+    fetch("https://toy-marketplace-server-gamma.vercel.app/allToy", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(result => {
-      if (result?.insertedId) {
-        // console.log(result)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result?.insertedId) {
+          // console.log(result)
           Swal.fire({
-            title:"Success!",
-            text:`Successfully added`,
-            icon:"success",
+            title: "Success!",
+            text: `Successfully added`,
+            icon: "success",
             showConfirmButton: false,
-            timer: 1500
-        })
-      }
-    }).catch(error =>{
-        console.error(error)
-    })
-};
+            timer: 1500,
+          });
+          reset();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="bg-base-200 ">
       <form onSubmit={handleSubmit(onSubmit)}>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-20">
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Picture URL of the toy</span>
             </label>
@@ -55,7 +61,12 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Toy Name</span>
             </label>
@@ -66,7 +77,12 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Your Name</span>
             </label>
@@ -78,7 +94,12 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Your Email</span>
             </label>
@@ -90,17 +111,30 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Sub-category </span>
             </label>
-            <select  {...register("subCategory", { required: true })} className="input input-bordered">
-             <option value="regular">regular </option>
-             <option value="truck">truck</option>
-             <option value="police">police</option>
+            <select
+              {...register("subCategory", { required: true })}
+              className="input input-bordered"
+            >
+              <option value="regular">regular </option>
+              <option value="truck">truck</option>
+              <option value="police">police</option>
             </select>
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Price</span>
             </label>
@@ -111,18 +145,35 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
-              <span className="label-text">Rating should be between zero to five</span>
+              <span className="label-text">
+                Rating should be between zero to five
+              </span>
             </label>
             <input
-              {...register("rating", { required: true, min: 0, max: 5, message: "" })}
+              {...register("rating", {
+                required: true,
+                min: 0,
+                max: 5,
+                message: "",
+              })}
               type="number"
               placeholder="give rating your toy"
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Available quantity</span>
             </label>
@@ -133,7 +184,12 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Detail description</span>
             </label>
@@ -144,7 +200,12 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div
+            className="form-control"
+            data-aos="fade-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          >
             <label className="label">
               <span className="label-text">Add your toy by click </span>
             </label>
