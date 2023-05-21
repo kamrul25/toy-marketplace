@@ -42,9 +42,9 @@ const AddToy = () => {
   };
 
   return (
-    <div className="bg-base-200 ">
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-20 mt-10 mb-20">
           <div
             className="form-control"
             data-aos="fade-right"
