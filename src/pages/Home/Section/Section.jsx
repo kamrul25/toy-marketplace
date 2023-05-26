@@ -11,17 +11,17 @@ const Section = () => {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000"
     >
-      <div className=" border rounded-xl shadow-xl image-full">
-        <img src={img1} alt="" className="w-auto h-40 rounded-xl" />
+      <div className=" border rounded-xl shadow-xl">
+        <img src={img1} alt="" className="w-full h-40 rounded-xl" />
       </div>
-      <div className=" border rounded-xl shadow-xl image-full">
-        <img src={img2} alt="" className="w-auto h-40 rounded-xl" />
+      <div className=" border rounded-xl shadow-xl">
+        <img src={img2} alt="" className="w-full h-40 rounded-xl" />
       </div>
-      <div className=" border rounded-xl shadow-xl image-full">
-        <img src={img3} alt="" className="w-auto h-40 rounded-xl" />
+      <div className=" border rounded-xl shadow-xl">
+        <img src={img3} alt="" className="w-full h-40 rounded-xl" />
       </div>
-      <div className=" border rounded-xl shadow-xl image-full">
-        <img src={img4} alt="" className="w-auto h-40 rounded-xl" />
+      <div className=" border rounded-xl shadow-xl">
+        <img src={img4} alt="" className="w-full h-40 rounded-xl" />
       </div>
 
       
