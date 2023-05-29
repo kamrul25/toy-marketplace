@@ -1,14 +1,16 @@
 // import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AllToys = () => {
   useTitle("All Toys");
   const loadedAllToy = useLoaderData();
   const [allToy, setAllToy] = useState(loadedAllToy);
   const [searchText, setSearchText] = useState("");
+  const {user} = useContext(AuthContext)
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -29,6 +31,7 @@ const AllToys = () => {
       });
   };
   const handleDetails = () => {
+   if(user?.email){
     Swal.fire({
       title: "Success!",
       text: `Details Ready Successfully`,
@@ -36,6 +39,7 @@ const AllToys = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+   }
   };
   return (
     <div>

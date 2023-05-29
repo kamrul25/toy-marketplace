@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Category = ({ toy }) => {
+  const {user} = useContext(AuthContext)
   const { image, toyName, price, rating } = toy;
   const handleDetails = () => {
+   if(user?.email){
     Swal.fire({
       title: "Success!",
       text: `Details Ready Successfully`,
@@ -12,6 +16,7 @@ const Category = ({ toy }) => {
       showConfirmButton: false,
       timer: 1500,
     });
+   }
   };
   return (
     <div className="card  lg:card-side bg-base-100 shadow-xl">
